@@ -1,7 +1,6 @@
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
-var myList = document.querySelectorAll("li")[0];
 var list = document.getElementsByTagName("li");
 
 
@@ -39,17 +38,22 @@ function addListAfterKeypress(event) {
 	}
 }
 
- function CrossOutListItem() {
-	myList.classList.toggle("done");	
- }
+ function listLength() {
+	return list.length;
+}
 
-// ul.onclick=function(event){
-// 	var target=event.target;
-// 	target.classList.toggle("done");
-// }
+ function CrossOutListItem () {
+	list[i].addEventListener("click", function() {
+	this.classList.toggle("done");	
+	});
+ };
 
-// function ListLength() {
-// 	return list.length;
+for (i = 0; i < listLength(); i++) {
+	CrossOutListItem();
+}
+
+// for (i = 0; i < list.length; i++) {
+// 	CrossOutListItem();
 // }
 
 
@@ -62,20 +66,17 @@ function AddButtonsToList () {
 	});
 }
 
-// USES FUNCTION
-// for (i = 0; i < listLength(); i++) {
-// 	AddButtonsToList();
-// }
-
-for (i = 0; i < list.length; i++) {
+for (i = 0; i < listLength(); i++) {
 	AddButtonsToList();
 }
+
+// for (i = 0; i < list.length; i++) {
+// 	AddButtonsToList();
+// }
 
 
 
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
-
-myList.addEventListener("click", CrossOutListItem);
 
